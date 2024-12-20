@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,9 @@ export const LoginPage = () => {
       email,
       password,
     });
-    console.log(responseLogin);
+    if (responseLogin.status === 200) {
+      navigate('/cabinet');
+    }
   };
 
   return (
